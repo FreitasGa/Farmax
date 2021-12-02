@@ -73,7 +73,7 @@
         <div class="col-sm-4">
           <br /><br />
           <h2>Adicionar remédio</h2>
-          <form action="{{ url_for('router.main') }}" method="post">
+          <form action="{{ url_for('router.add_medicine') }}" method="post">
             <div class="form-group">
               <label for="Nome">Nome</label>
               <input
@@ -125,10 +125,12 @@
         <div class="col-sm-4">
           <br /><br />
           <h3>Listas dos remédios</h3>
-          {% if lenght > 0  %} 
-            {% for item in items %}
-              <p>{{ item.name }}</p>
-            {% endfor %}
+          {% if lenght > 0  %}
+            <ul>
+              {% for item in items %}
+                <li>{{ item.name }}, {{ item.price }}</li>
+              {% endfor %}
+            </ul>
           {% else %}
             <p> Aqui eu quero colocar todos os remédios do banco </p>
           {% endif %}
