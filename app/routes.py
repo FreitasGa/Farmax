@@ -1,13 +1,28 @@
-import functools
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
-)
+from flask import Blueprint, redirect, render_template, request, url_for
+from config import mongo
 
-router = Blueprint("main", __name__)
+router = Blueprint("router", __name__)
 
-@router.route("/", methods=("GET", "POST"))
+
+@router.route("/", methods=["GET"])
 def main():
-    if request.method == "POST":
-        print('Post')
+    medicine_collection = mongo.db.medicine
 
-    return render_template("main.html")
+    items = medicine_collection.find()
+    items = [item for item in items]
+
+    return render_template("main.html", items=items, lenght=len(items))
+
+
+@router.route("/add_medicine", methods=["POST"])
+def add_medicine():
+    medicine_collection = mongo.db.medicine
+
+    name = request.form.get("Nome")
+    description = request.form.get("Descricao")
+    price = request.form.get("Preco")
+
+    item = {"name": name, "price": price, "description": description}
+    medicine_collection.insert_one(item)
+
+    return redirect(url_for("router.main"))

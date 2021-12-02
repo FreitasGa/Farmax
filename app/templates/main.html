@@ -1,69 +1,139 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Farmax</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+    }
+    .container-fluid {
+      padding: 60px 50px;
+    }
+    .bg-grey {
+      background-color: #f6f6f6;
+      padding: 0 20rem;
+    }
+    .logo {
+      width: 200px;
+    }
+    @media screen and (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+      }
+    }
 
-  <body >
-    <div  id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol  class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-      </ol>
+    img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+    }
+  </style>
+  <body class="bg-grey">
+    <img
+      src="https://www.itl.cat/pngfile/big/137-1375413_happy-pills-wallpaper-hd-wallpaper-for-facebook.jpg"
+    />
+    <!-- Container image -->
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="item active">
-          <img  style="width:100%; height:50vh; " alt="0" src="https://data2.1freewallpapers.com/download/medicine-pharmacy-pills.jpg">
+    <div class="container-fluid bg-grey">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>Sobre nosso projeto</h2>
+          <h4>
+            Calculamos o lucro máximo do seu remédio em uma mês, considerando o
+            rendimento de vendas da nossa empresa!
+          </h4>
+          <p>Para calcular o lucro máximo basta</p>
+          <ul>
+            <li>Coloque o nome do seu remédio</li>
+            <li>Escolha um preço</li>
+            <li>Espere a seu lucro</li>
+          </ul>
         </div>
-
-        <div class="item">
-          <img  style="width:100%;  height:50vh;" alt="2" src="https://wallpapersfull.com/wallpapers/2019/pilulas-3d-wallpaper-13789.jpg">
+        <div class="col-sm-4">
+          <image
+            class="logo"
+            src="https://png.pngtree.com/element_our/20190601/ourlarge/pngtree-pill-health-icon-image_1331466.jpg"
+          ></image>
         </div>
       </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <!-- Container image -->
 
-    <!-- Container -->
-    <div class="container">
+    <!-- Forms -->
+    <div class="container-fluid">
       <div class="row">
         <div class="col-sm-4">
-            <br><br>
-            <h2>Adicionar remédio</h2>
-            <form >
-              <div class="form-group">
-                <label for="Nome">Nome</label>
-                <input type="nome" class="form-control" id="Nome" placeholder="Nome do remédio">
-              </div>
-              <div class="form-group">
-                <label for="Descricao">Descrição</label>
-                <textarea class="form-control" rows="5" id="Descricao"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="Preco">Preço</label>
-                <input type="number" class="form-control" id="Preco" placeholder="Preço do remédio" >
-              </div>
-              <button type="button" style="width: 100%;" class="btn btn-primary">Calcular</button>
-            </form>
-          </div>
-        <div class="col-sm-4"></div>
+          <br /><br />
+          <h2>Adicionar remédio</h2>
+          <form action="{{ url_for('router.add_medicine') }}" method="post">
+            <div class="form-group">
+              <label for="Nome">Nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Nome"
+                name="Nome"
+                placeholder="Nome do remédio"
+              />
+            </div>
+            <div class="form-group">
+              <label for="Descricao">Descrição</label>
+              <textarea
+                class="form-control"
+                rows="5"
+                style="width: 100%"
+                id="Descricao"
+                name="Descricao"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="Preco">Preço</label>
+              <input
+                type="number"
+                style="width: 100%"
+                class="form-control"
+                id="Preco"
+                name="Preco"
+                placeholder="Preço do remédio"
+              />
+            </div>
+            <button
+              type="submit"
+              style="width: 100%; margin-bottom: 100px"
+              class="btn btn-primary"
+            >
+              Calcular
+            </button>
+          </form>
+        </div>
+
         <div class="col-sm-4">
-           <br><br>
+          <br /><br />
+          <h3>Valores maximo ou minimo</h3>
+          <h4>Maximo:</h4>
+          <h4>Minimo:</h4>
+        </div>
+
+        <div class="col-sm-4">
+          <br /><br />
           <h3>Listas dos remédios</h3>
-          <p>Aqui eu quero colocar todos os remédios do banco</p>
+          {% if lenght > 0  %}
+            <ul>
+              {% for item in items %}
+                <li>{{ item.name }}, {{ item.price }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p> Aqui eu quero colocar todos os remédios do banco </p>
+          {% endif %}
         </div>
       </div>
     </div>
