@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-  .jumbotron {
-    background-color: #f4511e;
-    color: #fff;
-    padding: 100px 25px;
-  }
-  .container-fluid {
-    padding: 60px 50px;
-  }
-  .bg-grey {
-    background-color: #f6f6f6;
-  }
-  .logo {
-    width: 200px;
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
+  <title>Farmax</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
     }
-  }
+    .container-fluid {
+      padding: 60px 50px;
+    }
+    .bg-grey {
+      background-color: #f6f6f6;
+      padding: 0 20rem;
+    }
+    .logo {
+      width: 200px;
+    }
+    @media screen and (max-width: 768px) {
+      .col-sm-4 {
+        text-align: center;
+      }
+    }
 
-  img {
-    width: 100%; /* Set width to 100% */
-    margin: auto;
-  }
-</style>
+    img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+    }
+  </style>
   <body class="bg-grey">
-    <img src="https://www.itl.cat/pngfile/big/137-1375413_happy-pills-wallpaper-hd-wallpaper-for-facebook.jpg">
+    <img
+      src="https://www.itl.cat/pngfile/big/137-1375413_happy-pills-wallpaper-hd-wallpaper-for-facebook.jpg"
+    />
     <!-- Container image -->
 
     <div class="container-fluid bg-grey">
       <div class="row">
         <div class="col-sm-8">
           <h2>Sobre nosso projeto</h2>
-          <h4>Calculamos o lucro máximo do seu remédio em uma mês, considerando o rendimento de vendas da nossa empresa!</h4>
+          <h4>
+            Calculamos o lucro máximo do seu remédio em uma mês, considerando o
+            rendimento de vendas da nossa empresa!
+          </h4>
           <p>Para calcular o lucro máximo basta</p>
           <ul>
             <li>Coloque o nome do seu remédio</li>
@@ -49,7 +58,10 @@
           </ul>
         </div>
         <div class="col-sm-4">
-          <image class="logo" src="https://png.pngtree.com/element_our/20190601/ourlarge/pngtree-pill-health-icon-image_1331466.jpg"></image>
+          <image
+            class="logo"
+            src="https://png.pngtree.com/element_our/20190601/ourlarge/pngtree-pill-health-icon-image_1331466.jpg"
+          ></image>
         </div>
       </div>
     </div>
@@ -57,38 +69,69 @@
 
     <!-- Forms -->
     <div class="container-fluid">
-      <div class="row" >
-        <div class="col-sm-4" >
-          <br><br>
+      <div class="row">
+        <div class="col-sm-4">
+          <br /><br />
           <h2>Adicionar remédio</h2>
-          <form >
+          <form action="{{ url_for('router.main') }}" method="post">
             <div class="form-group">
               <label for="Nome">Nome</label>
-              <input type="nome" class="form-control" id="Nome" placeholder="Nome do remédio">
+              <input
+                type="text"
+                class="form-control"
+                id="Nome"
+                name="Nome"
+                placeholder="Nome do remédio"
+              />
             </div>
             <div class="form-group">
               <label for="Descricao">Descrição</label>
-              <textarea class="form-control" rows="5" style="width: 100%;" id="Descricao"></textarea>
+              <textarea
+                class="form-control"
+                rows="5"
+                style="width: 100%"
+                id="Descricao"
+                name="Descricao"
+              ></textarea>
             </div>
             <div class="form-group">
               <label for="Preco">Preço</label>
-              <input type="number"  style="width: 100%;" class="form-control" id="Preco" placeholder="Preço do remédio" >
+              <input
+                type="number"
+                style="width: 100%"
+                class="form-control"
+                id="Preco"
+                name="Preco"
+                placeholder="Preço do remédio"
+              />
             </div>
-            <button type="button" style="width: 100%; margin-bottom: 100px;" class="btn btn-primary">Calcular</button>
+            <button
+              type="submit"
+              style="width: 100%; margin-bottom: 100px"
+              class="btn btn-primary"
+            >
+              Calcular
+            </button>
           </form>
         </div>
 
         <div class="col-sm-4">
-          <br><br>
+          <br /><br />
           <h3>Valores maximo ou minimo</h3>
-          <h4>Maximo: </h4>
-          <h4>Minimo: </h4>
+          <h4>Maximo:</h4>
+          <h4>Minimo:</h4>
         </div>
 
         <div class="col-sm-4">
-          <br><br>
-         <h3>Listas dos remédios</h3>
-         <p>Aqui eu quero colocar todos os remédios do banco</p>
+          <br /><br />
+          <h3>Listas dos remédios</h3>
+          {% if lenght > 0  %} 
+            {% for item in items %}
+              <p>{{ item.name }}</p>
+            {% endfor %}
+          {% else %}
+            <p> Aqui eu quero colocar todos os remédios do banco </p>
+          {% endif %}
         </div>
       </div>
     </div>
