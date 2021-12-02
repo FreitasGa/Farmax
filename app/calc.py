@@ -17,6 +17,6 @@ d1 = diff(l, x) # primeira derivada dos crias! Amém :)
 
 max = solve(d1, x) # resolvendo a equação
 max =  max[0] #Pegando
-max = Integer(max)
+max = Integer(max) # valor da unidade que deve serr fabricada para obter o lucro maximo
 
 #-----------------------------------------------
