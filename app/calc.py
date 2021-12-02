@@ -1,6 +1,5 @@
 from sympy import *
 
-
 def calc_price(price):
     # atribuir a variavel x como sendo uma variavel matematica da funcao
     x = symbols('x')
