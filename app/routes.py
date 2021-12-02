@@ -6,12 +6,12 @@ router = Blueprint("main", __name__)
 
 @router.route("/", methods=["GET", "POST"])
 def main():
-    db_collection = mongo.db.drugs
-    items = db_collection.find()
+    items = mongo.db.drugs.find()
+    items = [item for item in items]
 
-    print(items)
-    
+    print(items, len(items))
+
     if request.method == "POST":
         print('Post')
 
-    return render_template("main.html")
+    return render_template("main.html", items=items, lenght=len(items))
