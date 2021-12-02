@@ -1,22 +1,18 @@
 from sympy import *
 
-#-----------------------------------------------
+def calcPreço(preco):
 
-priceUni = 200; # Aqui vai ser o input do preco do remedio!
+    x = symbols('x') #atribuir a variavel x como sendo uma variavel matematica da funcao
+    c = 50000 + 80*x + 0.003*x**2 # funcao custo genérica
+    r = preco * x # renda
+    l = r - c
 
-#-----------------------------------------------
-#Aqui comeca a magica heheheheh
+    init_printing(use_unicode=True) # iniciando o sympy, n sei se é realmente necessario
+    d1 = diff(l, x) # Derivada da função custo
 
-x = symbols('x')
-c = 50000 + 80*x + 0.003*x**2 # custo
-r = priceUni * x # renda
-l = r - c
+    max = solve(d1, x) # resolvendo a equação
+    max =  max[0] #Pegando
+    max = Integer(max)
 
-init_printing(use_unicode=True) # iniciando o sympy, n sei se é realmente necessario
-d1 = diff(l, x) # primeira derivada dos crias! Amém :)
+    return max;
 
-max = solve(d1, x) # resolvendo a equação
-max =  max[0] #Pegando
-max = Integer(max)
-
-#-----------------------------------------------
