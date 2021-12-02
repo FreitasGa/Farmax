@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, flash
 from config import mongo
 
 router = Blueprint("router", __name__)
@@ -21,8 +21,12 @@ def add_medicine():
     name = request.form.get("Nome")
     description = request.form.get("Descricao")
     price = request.form.get("Preco")
+        
+    if name != medicine_collection.find({"name": name}):
+        item = {"name": name, "price": price, "description": description}
+        medicine_collection.insert_one(item)
 
-    item = {"name": name, "price": price, "description": description}
-    medicine_collection.insert_one(item)
+    elif name == medicine_collection.find({"name": name}):
+        flash('Remédio já cadastrado!')
 
     return redirect(url_for("router.main"))
