@@ -1,31 +1,29 @@
-from sympy import *
+from sympy import init_printing, symbols, diff, Integer, solve
 
 def calcMin(preco):
-    x = symbols('x') #atribuir a variavel x como sendo uma variavel matematica da funcao
-    c =  0.003*x**2 + 80*x + 50000  # funcao custo genérica para valor minimo
-    r = preco * x # função receita
-    l = r - c #lucro
+    x = symbols('x')
+    custo =  0.003*x**2 + 80*x + 50000
+    receita = preco * x
+    lucro = receita - custo
 
-    init_printing(use_unicode=True) # iniciando o sympy
-    d1 = diff(l, x) # Derivada da função custo
-
-    min = solve(d1, x) # resolvendo a equação
-    min=  min[0] # Pegando a raiz positiva da funcao
+    init_printing(use_unicode=True)
+    d1 = diff(lucro, x)
+    min = solve(d1, x)
     min = Integer(min)
 
-    return l, min
+    return lucro, min
 
 def calcMax(preco):
     x = symbols('x')
-    c =  -0.003*x ** 2 + 80 * x + 50000
-    r = preco * x
-    l = r - c
+    custo =  -0.003*x ** 2 + 80 * x + 50000
+    receita = preco * x
+    lucro = receita - custo
 
     init_printing(use_unicode=True)
-    d1 = diff(l, x)
+    d1 = diff(lucro, x)
 
     max = solve(d1, x)
     max = max[0]
     max = Integer(max)
 
-    return l, max
+    return lucro, max
