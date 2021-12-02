@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link
     rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-  />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  >
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <style>
     .jumbotron {
       background-color: #f4511e;
@@ -18,9 +21,9 @@
     .container-fluid {
       padding: 60px 50px;
     }
-    .bg-grey {
+    .main {
       background-color: #f6f6f6;
-      padding: 0 20rem;
+      padding: 0 16rem;
     }
     .logo {
       width: 200px;
@@ -36,7 +39,7 @@
       margin: auto;
     }
   </style>
-  <body class="bg-grey">
+  <body class="main">
     <img
       src="https://www.itl.cat/pngfile/big/137-1375413_happy-pills-wallpaper-hd-wallpaper-for-facebook.jpg"
     />
@@ -46,22 +49,13 @@
       <div class="row">
         <div class="col-sm-8">
           <h2>Sobre nosso projeto</h2>
-          <h4>
-            Calculamos o lucro máximo do seu remédio em uma mês, considerando o
-            rendimento de vendas da nossa empresa!
-          </h4>
-          <p>Para calcular o lucro máximo basta</p>
+          <p>Calculamos o lucro máximo do seu remédio em uma mês, considerando o
+            rendimento de vendas da nossa empresa! Para calcular o lucro máximo basta</p>
           <ul>
             <li>Coloque o nome do seu remédio</li>
             <li>Escolha um preço</li>
             <li>Espere a seu lucro</li>
           </ul>
-        </div>
-        <div class="col-sm-4">
-          <image
-            class="logo"
-            src="https://png.pngtree.com/element_our/20190601/ourlarge/pngtree-pill-health-icon-image_1331466.jpg"
-          ></image>
         </div>
       </div>
     </div>
@@ -69,73 +63,98 @@
 
     <!-- Forms -->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-4">
-          <br /><br />
-          <h2>Adicionar remédio</h2>
-          <form action="{{ url_for('router.add_medicine') }}" method="post">
-            <div class="form-group">
-              <label for="Nome">Nome</label>
-              <input
-                type="text"
-                class="form-control"
-                id="Nome"
-                name="Nome"
-                placeholder="Nome do remédio"
-              />
+      <div class="row ">
+        <div class="col-sm-6 align-items-center">
+          <div class="card" style="width: 70%;">
+            <div class="card-body" style="">
+              <h5 class="card-title">Adicionar remédio</h5>
+               <form action="{{ url_for('router.add_medicine') }}" method="post">
+                        <div class="form-group">
+                          <label for="Nome">Nome</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="Nome"
+                            name="Nome"
+                            style="width: 100%; "
+                            placeholder="Nome do remédio"
+                            required= "true"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="Descricao">Descrição</label>
+                          <textarea
+                            class="form-control"
+                            rows="5"
+                            style="width: 100%; resize: vertical;"
+                            id="Descricao"
+                            name="Descricao"
+                          ></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="Preco">Preço</label>
+                          <input
+                            type="number"
+                            style="width: 100%;"
+                            class="form-control"
+                            id="Preco"
+                            name="Preco"
+                            placeholder="Preço do remédio"
+                            required= "true"
+                          />
+                        </div>
+                        <div styles="width:100%; align-items: center;">
+                          <button
+                            type="submit"
+                            style="width: 100%;"
+                            class="btn btn-primary"
+                          >
+                            Calcular
+                          </button>
+                     </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="Descricao">Descrição</label>
-              <textarea
-                class="form-control"
-                rows="5"
-                style="width: 100%; resize: vertical;"
-                id="Descricao"
-                name="Descricao"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="Preco">Preço</label>
-              <input
-                type="number"
-                style="width: 100%"
-                class="form-control"
-                id="Preco"
-                name="Preco"
-                placeholder="Preço do remédio"
-              />
-            </div>
-            <button
-              type="submit"
-              style="width: 100%; margin-bottom: 100px"
-              class="btn btn-primary"
-            >
-              Calcular
-            </button>
-          </form>
+          </div>
         </div>
-
-        <div class="col-sm-4">
-          <br /><br />
-          <h3>Valores máximo ou minimo</h3>
-          <h4>Máximo de unidade necessária: </h4>
-          <h4>Lucro máximo: </h4>
-        </div>
-
-        <div class="col-sm-4">
-          <br /><br />
-          <h3>Listas dos remédios</h3>
-          {% if lenght > 0  %}
-            <ul>
+        <div class="col-sm-6">
+          <h3 class="list-group-item list-group-item-light"> Lista de remédios</h3>
+          <ul class="list-group" style="max-height: 412px; overflow: auto;">
+            {% if lenght > 0  %}
               {% for item in items %}
-                <li>{{ item.name }}, {{ item.price }}</li>
+                  <li class="list-group-item">
+                   <p class="float-left">{{item.name}}</p>
+                  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#{{item.name}}">
+                    abrir
+                  </button>
+                  </li>
               {% endfor %}
-            </ul>
-          {% else %}
-            <p> Nenhum remédio salvo no banco </p>
-          {% endif %}
+            {% else %}
+            {% endif %}
+          </ul>
         </div>
       </div>
     </div>
+
+    {% for item in items %}
+      <div class="modal fade" id="{{item.name}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >{{item.name}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{item.description}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   </body>
 </html>
+
