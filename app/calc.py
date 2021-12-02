@@ -1,11 +1,11 @@
 from sympy import *
 
 
-def calcPreço(preco):
+def calc_price(price):
     # atribuir a variavel x como sendo uma variavel matematica da funcao
     x = symbols('x')
-    c = 50000 + 80*x + 0.003*x**2  # funcao custo genérica
-    r = preco * x  # renda
+    c = 50000 + 80 * x + 0.003 * x ** 2  # funcao custo genérica
+    r = price * x  # renda
     l = r - c
 
     # iniciando o sympy, n sei se é realmente necessario
