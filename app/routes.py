@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for, flash
 from config import mongo
+from calc import calcMax
 
 router = Blueprint("router", __name__)
 
@@ -21,12 +22,17 @@ def add_medicine():
     name = request.form.get("Nome")
     description = request.form.get("Descricao")
     price = request.form.get("Preco")
-        
-    if name != medicine_collection.find({"name": name}):
-        item = {"name": name, "price": price, "description": description}
+
+    price = int(price)
+    count = calcMax(price)
+    max = count * price
+
+    if name != medicine_collection.find_one({"name": name})["name"]:
+        print("cheguei")
+        item = {"name": name, "price": price, "description": description, "count": count, "max": max}
         medicine_collection.insert_one(item)
 
-    elif name == medicine_collection.find({"name": name}):
+    else:
         flash('Remédio já cadastrado!')
 
     return redirect(url_for("router.main"))
