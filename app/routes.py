@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for, flash, Flask
+from sympy.core.logic import Not
 from config import mongo
 from calc import calcMax
 
@@ -28,8 +29,7 @@ def add_medicine():
     count = calcMax(price)
     max = count * price
 
-    if name != medicine_collection.find_one({"name": name})["name"]:
-        print("cheguei")
+    if medicine_collection.find_one({"name": name}) == None:
         item = {"name": name, "price": price, "description": description, "count": count, "max": max}
         medicine_collection.insert_one(item)
 

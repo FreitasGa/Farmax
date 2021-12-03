@@ -49,10 +49,11 @@
     .alert-error {
       margin-bottom: 15px;
       padding: 8px;
-      background-color: red;
-      color: white;
+      background-color: white;
+      color: red;
       border-radius: 5px;
-      width: 45%;
+      width: 100%;
+      text-align: center;
     }
 
     img {
@@ -90,9 +91,6 @@
 <div class="container-fluid">
     <div class="row ">
         <div class="col-sm-6 align-items-center">
-            {% for message in get_flashed_messages() %}
-              <div class="alert-error">{{ message }}</div>
-            {% endfor %}
           <div class="card" style="width: 70%;">
             <div class="card-body">
               <h5 class="card-title">Adicionar remédio</h5>
@@ -139,6 +137,11 @@
                             >
                                 Calcular
                             </button>
+                            <p>
+                              {% for message in get_flashed_messages() %}
+                                <div class="alert-error">{{ message }}</div>
+                              {% endfor %}
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -179,12 +182,12 @@
                     <h6>Lucro máximo</h6>
                     <ul>
                         <li><p>Venda <strong>{{item.count}}</strong> unidades para obter o lucro maximo</p></li>
-                        <li><p>Lucro maximo: <strong>{{item.max}}</strong> </p></li>
+                        <li><p>Lucro maximo: <strong>R$ {{item.max}}</strong> </p></li>
                     </ul>
                     <h6>Informações Gerais</h6>
                     <ul>
                         <li><p>Nome: {{item.name}}</p></li>
-                        <li><p>Preço: {{item.price}}</p></li>
+                        <li><p>Preço: R$ {{item.price}}</p></li>
                     </ul>
                 </div>
                 {% if item.description%}
