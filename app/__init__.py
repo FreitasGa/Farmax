@@ -11,6 +11,7 @@ def create_app():
 
     mongo.init_app(app)
 
+    app.config['SECRET_KEY'] = 'tubaroesVoadores'
     app.register_blueprint(router)
     app.run()
 
