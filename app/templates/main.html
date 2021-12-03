@@ -9,6 +9,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous"
 >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -19,6 +23,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <style>
+    *{
+       font-family: 'Poppins', sans-serif;
+    };
     .jumbotron {
       background-color: #f4511e;
       color: #fff;
@@ -47,9 +54,12 @@
 
 </style>
 <body class="main">
-<img
-        src="https://www.itl.cat/pngfile/big/137-1375413_happy-pills-wallpaper-hd-wallpaper-for-facebook.jpg"
-/>
+
+<div class="jumbotron jumbotron-fluid  bg-primary text-white">
+  <div class="container">
+    <h3 class="display-4">FARMAX</h3>
+  </div>
+</div>
 <!-- Container image -->
 
 <div class="container-fluid bg-grey">
@@ -157,8 +167,8 @@
                 <div>
                     <h6>Lucro máximo</h6>
                     <ul>
-                        <li><p>Venda {{item.count}} unidades para obter o lucro maximo</p></li>
-                        <li><p>Lucro maximo: {{item.max}} </p></li>
+                        <li><p>Venda <strong>{{item.count}}</strong> unidades para obter o lucro maximo</p></li>
+                        <li><p>Lucro maximo: <strong>{{item.max}}</strong> </p></li>
                     </ul>
                     <h6>Informações Gerais</h6>
                     <ul>
